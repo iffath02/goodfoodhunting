@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <% if(isLoggedIn()){ %>
+    <form action="/sessions" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>Logout</button>
+    </form>
+    <% } %>
+
+    <a href="/dishes/new">Share a Dish</a>
+    <a href="/login">Login</a>
+<% if(isLoggedIn ()){ %>
+   <p>logged in as: <%= currentUser.email %></p> 
+   <% } %>
+    <% records.forEach(record => { %>
+    <h2><a href="/dishes/<%= record.id %>"><%= record.title %></a></h2>
+    <img src="<%= record.image_url %>" alt=""/>
+   <% }); %>
+</body>
+</html>
