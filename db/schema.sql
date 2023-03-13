@@ -3,7 +3,8 @@ CREATE DATABASE goodfoodhunting;
 CREATE TABLE dishes (
     id SERIAL PRIMARY KEY,
     title TEXT,
-    image_url TEXT
+    image_url TEXT,
+    user_id INTEGER
 );
 
 CREATE TABLE users (
@@ -18,3 +19,5 @@ INSERT INTO dishes(title, image_url) VALUES ('cake', 'https://www.michels.com.au
 
 INSERT INTO users (email) values ('ifsgr8leo@gmail.com');
 INSERT INTO users (email) values ('iffathfatima02@gmail.com');
+
+ALTER TABLE dishes ADD COLUMN user_id INTEGER;

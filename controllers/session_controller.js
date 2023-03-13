@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-//const pool = require('./../db')
+const pool = require('./../db')
 
-const { Pool } = require('pg')
-const pool = new Pool({
-    database: 'goodfoodhunting'
-})
+// const { Pool } = require('pg')
+// const pool = new Pool({
+//     database: 'goodfoodhunting'
+// })
 
 router.get('/login', (req, res) => {
     console.log(req.session)

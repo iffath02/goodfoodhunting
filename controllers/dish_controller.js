@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const ensureLoggedIn = require('./../middlewares/ensure_logged_in')
-//const pool = require('./../db')
+const pool = require('./../db')
 
-const { Pool } = require('pg')
-const pool = new Pool({
-    database: 'goodfoodhunting'
-})
+// const { Pool } = require('pg')
+// const pool = new Pool({
+//     database: 'goodfoodhunting'
+// })
 
 
     router.get('/', (req,res) => {

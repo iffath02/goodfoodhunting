@@ -5,13 +5,13 @@ const port = process.env.PORT || 3000
 const logger= require('./middlewares/logger')
 const methodOverride = require('./middlewares/method_override')
 const session = require('express-session')
-// const pool = require('./db')
+const pool = require('./db')
 const viewHelpers = require('./middlewares/view_helpers')
 
-const { Pool } = require('pg')
-const pool = new Pool({
-    database: 'goodfoodhunting'
-})
+// const { Pool } = require('pg')
+// const pool = new Pool({
+//     database: 'goodfoodhunting'
+// })
 
 //http methods - get post put patch delete
 
