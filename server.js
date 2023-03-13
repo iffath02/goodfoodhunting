@@ -7,6 +7,7 @@ const methodOverride = require('./middlewares/method_override')
 const session = require('express-session')
 const pool = require('./db')
 const viewHelpers = require('./middlewares/view_helpers')
+const MemoryStore = require('memorystore')(session)
 
 // const { Pool } = require('pg')
 // const pool = new Pool({
@@ -58,6 +59,9 @@ app.use(methodOverride)
 // adds a session object to the request
 app.use(session({
     secret: "keyboard cat",
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+      }),
     resave: false,
     saveUninitialized: true,
 })
