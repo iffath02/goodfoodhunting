@@ -25,6 +25,9 @@ router.post('/sessions', (req,res) => {
         }
 
         else{
+            const user = dbRes.rows[0]
+            req.session.userId = user.id // we are creating a 'userId' inside the session object 
+            req.session.email = user.email
             res.redirect('/')
         }
 
