@@ -58,7 +58,7 @@ app.use(methodOverride)
 
 // adds a session object to the request
 app.use(session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_SECRET || "mistyrose",
     store: new MemoryStore({
         checkPeriod: 86400000 // prune expired entries every 24h
       }),
