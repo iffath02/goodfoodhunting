@@ -18,25 +18,29 @@ router.post('/sessions', (req,res) => {
     const email = req.body.email
     const password = req.body.password
 
-    const sql = `Select * from users where email = $1;`
-    pool.query(sql, [email], (err, dbRes) => {
+    const sql = `Select * from users where password_digest = $1;`
+    pool.query(sql, [password], (err, dbRes) => {
         if(dbRes.rows.length === 0){
             res.render('login')
         }
 
-        const user = dbRes.rows[0]
+        else{
+            res.redirect('/')
+        }
 
-        bcrypt.compare(password, user.password_digest, (err, result) => {
-            if(result){
-                console.log(req.session)
-                req.session.userId = user.id // we are creating a 'userId' inside the session object 
-                req.session.email = user.email
+        // const user = dbRes.rows[0]
 
-                res.redirect('/')
-            } else{
-                res.render('login')
-            }
-        })
+        // bcrypt.compare(password, user.password_digest, (err, result) => {
+        //     if(result){
+        //         console.log(req.session)
+        //         req.session.userId = user.id // we are creating a 'userId' inside the session object 
+        //         req.session.email = user.email
+
+        //         res.redirect('/')
+        //     } else{
+        //         res.render('login')
+        //     }
+        // })
     })
 })
 
