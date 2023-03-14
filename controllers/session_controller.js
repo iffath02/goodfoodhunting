@@ -18,8 +18,8 @@ router.post('/sessions', (req,res) => {
     const email = req.body.email
     const password = req.body.password
 
-    const sql = `Select * from users where password_digest = $1;`
-    pool.query(sql, [password], (err, dbRes) => {
+    const sql = `Select * from users where email=$1 and password_digest = $2;`
+    pool.query(sql, [email, password], (err, dbRes) => {
         if(dbRes.rows.length === 0){
             res.render('login')
         }
